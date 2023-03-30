@@ -1,1 +1,2 @@
 serwer/src/main/resources/application-dev.properties
+k8s/.idea
