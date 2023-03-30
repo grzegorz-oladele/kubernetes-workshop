@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+#  DATABASE
+  database:
+    container_name: database
+    image: postgres:14.1
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: kubernetes
+      POSTGRES_PORT: 5432
+    restart: always
+    networks:
+      - application
+#  SERVER APP
+  server:
+    container_name: server
+    image: grzesiekoladele/server_app:v1
+    ports:
+      - "8181:8181"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/kubernetes
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+    restart: always
+    depends_on:
+      - database
+    networks:
+      - application
+#  CLIENT APP
+  client:
+    container_name: client
+    image: grzesiekoladele/client_app:v1
+    ports:
+      - "8080:8080"
+    environment:
+      REST-TEMPLATE_HOST: server
+    restart: always
+    depends_on:
+      - server
+    networks:
+      - application
+networks:
+  application:
+    driver: bridge

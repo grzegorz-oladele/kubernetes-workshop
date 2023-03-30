@@ -6,7 +6,7 @@ import lombok.*;
 import static jakarta.persistence.EnumType.STRING;
 
 @Entity
-@Table(name = "messages")
+@Table(name = "programing_languages")
 @Getter
 @Setter
 @NoArgsConstructor

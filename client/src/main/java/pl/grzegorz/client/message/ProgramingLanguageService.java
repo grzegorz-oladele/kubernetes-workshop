@@ -2,22 +2,29 @@ package pl.grzegorz.client.message;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+@Slf4j
 class ProgramingLanguageService {
-
-    private static final String URL = "http://localhost:8181/languages";
-
+    private final String url;
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
 
+    public ProgramingLanguageService(RestTemplate restTemplate, ObjectMapper objectMapper,
+                                     @Value("${rest-template.host}") String address) {
+        this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
+        this.url = "http://" + address + ":8181/languages";
+    }
+
     List<ProgramingLanguageDto> getAllMessages() {
+        log.info(url);
         return getMessagesFromExistingService();
     }
 
@@ -41,21 +48,21 @@ class ProgramingLanguageService {
     }
 
     private List<ProgramingLanguageDto> getMessagesFromExistingService() {
-        ProgramingLanguageDto[] messageList = restTemplate.getForObject(URL, ProgramingLanguageDto[].class);
+        ProgramingLanguageDto[] messageList = restTemplate.getForObject(url, ProgramingLanguageDto[].class);
         return objectMapper.convertValue(messageList, new TypeReference<>() {
         });
     }
 
     private ProgramingLanguageDto getMessageByIdFromExistingValue(long messageId) {
-        ProgramingLanguageDto message = restTemplate.getForObject(URL + "/" + messageId, ProgramingLanguageDto.class);
+        ProgramingLanguageDto message = restTemplate.getForObject(url + "/" + messageId, ProgramingLanguageDto.class);
         return objectMapper.convertValue(message, ProgramingLanguageDto.class);
     }
 
     private void createLanguageDto(LanguageDto languageDto) {
-        restTemplate.postForObject(URL, languageDto, LanguageDto.class);
+        restTemplate.postForObject(url, languageDto, LanguageDto.class);
     }
 
     private void deleteLanguageById(long languageId) {
-        restTemplate.delete(URL + "/" + languageId);
+        restTemplate.delete(url + "/" + languageId);
     }
 }
