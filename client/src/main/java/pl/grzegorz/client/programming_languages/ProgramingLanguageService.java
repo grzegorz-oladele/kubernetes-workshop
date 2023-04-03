@@ -1,4 +1,4 @@
-package pl.grzegorz.client.programing_languages;
+package pl.grzegorz.client.programming_languages;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

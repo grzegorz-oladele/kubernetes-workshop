@@ -1,4 +1,4 @@
-package pl.grzegorz.client.programing_languages;
+package pl.grzegorz.client.programming_languages;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/programing-languages")
+@RequestMapping("/programming-languages")
 @RequiredArgsConstructor
 class ProgrammingLanguageController {
 
