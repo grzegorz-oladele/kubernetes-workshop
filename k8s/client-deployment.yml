@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: grzesiekoladele/client_app:v1
+          image: grzesiekoladele/client_app:v2
           ports:
             - containerPort: 8080
           env:
