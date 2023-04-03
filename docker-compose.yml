@@ -31,11 +31,12 @@ services:
 #  CLIENT APP
   client:
     container_name: client
-    image: grzesiekoladele/client_app:v1
+    image: grzesiekoladele/client_app:v2
     ports:
       - "8080:8080"
     environment:
       REST-TEMPLATE_HOST: server
+      SPRING_MAIN_ALLOW-BEAN-DEFINITION-OVERRIDING: true
     restart: always
     depends_on:
       - server
