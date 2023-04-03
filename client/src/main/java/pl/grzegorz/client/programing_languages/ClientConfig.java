@@ -1,4 +1,4 @@
-package pl.grzegorz.client.message;
+package pl.grzegorz.client.programing_languages;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;

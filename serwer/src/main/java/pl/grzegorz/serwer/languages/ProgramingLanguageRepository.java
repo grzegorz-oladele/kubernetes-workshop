@@ -1,4 +1,4 @@
-package pl.grzegorz.serwer.message;
+package pl.grzegorz.serwer.languages;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

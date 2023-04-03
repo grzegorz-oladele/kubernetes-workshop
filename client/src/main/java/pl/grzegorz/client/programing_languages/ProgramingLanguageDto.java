@@ -1,4 +1,4 @@
-package pl.grzegorz.client.message;
+package pl.grzegorz.client.programing_languages;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

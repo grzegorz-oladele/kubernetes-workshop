@@ -1,4 +1,4 @@
-package pl.grzegorz.serwer.message;
+package pl.grzegorz.serwer.languages;
 
 enum DifficultyLevel {
 

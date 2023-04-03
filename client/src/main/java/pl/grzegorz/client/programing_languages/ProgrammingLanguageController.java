@@ -1,4 +1,4 @@
-package pl.grzegorz.client.message;
+package pl.grzegorz.client.programing_languages;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/programing-languages")
 @RequiredArgsConstructor
 class ProgrammingLanguageController {
 
@@ -28,8 +28,8 @@ class ProgrammingLanguageController {
     }
 
     @PostMapping
-    void createLanguage(@RequestBody LanguageDto languageDto) {
-        programingLanguageService.createLanguage(languageDto);
+    void createLanguage(@RequestBody ProgrammingLanguageDto programmingLanguageDto) {
+        programingLanguageService.createLanguage(programmingLanguageDto);
     }
 
     @DeleteMapping("/{languageId}")

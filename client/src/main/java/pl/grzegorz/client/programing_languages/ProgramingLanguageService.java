@@ -1,4 +1,4 @@
-package pl.grzegorz.client.message;
+package pl.grzegorz.client.programing_languages;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,8 +39,8 @@ class ProgramingLanguageService {
         return getMessageByIdFromExistingValue(languageId);
     }
 
-    void createLanguage(LanguageDto languageDto) {
-        createLanguageDto(languageDto);
+    void createLanguage(ProgrammingLanguageDto programmingLanguageDto) {
+        createLanguageDto(programmingLanguageDto);
     }
 
     void removeLanguage(long languageId) {
@@ -58,8 +58,8 @@ class ProgramingLanguageService {
         return objectMapper.convertValue(message, ProgramingLanguageDto.class);
     }
 
-    private void createLanguageDto(LanguageDto languageDto) {
-        restTemplate.postForObject(url, languageDto, LanguageDto.class);
+    private void createLanguageDto(ProgrammingLanguageDto programmingLanguageDto) {
+        restTemplate.postForObject(url, programmingLanguageDto, ProgrammingLanguageDto.class);
     }
 
     private void deleteLanguageById(long languageId) {

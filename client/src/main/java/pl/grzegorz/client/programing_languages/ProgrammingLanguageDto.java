@@ -1,4 +1,4 @@
-package pl.grzegorz.client.message;
+package pl.grzegorz.client.programing_languages;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-class LanguageDto {
+class ProgrammingLanguageDto {
 
     private String name;
     private String difficultyLevel;
