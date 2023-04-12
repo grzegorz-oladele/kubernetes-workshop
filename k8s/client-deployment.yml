@@ -18,5 +18,7 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: REST-TEMPLATE_HOST
+            - name: REST-TEMPLATE_SERVER_HOST
               value: server-cluster-ip-service
+            - name: REST-TEMPLATE_MESSAGE_SERVICE_HOST
+              value: message-service-cluster-ip-service

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message-service-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: message
+  template:
+    metadata:
+      labels:
+        component: message
+    spec:
+      containers:
+        - name: message-service
+          image: grzesiekoladele/message-service:v1
+          ports:
+            - containerPort: 8282
