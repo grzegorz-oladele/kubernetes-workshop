@@ -17,7 +17,7 @@ class ProgramingLanguageService {
     private final ObjectMapper objectMapper;
 
     public ProgramingLanguageService(RestTemplate restTemplate, ObjectMapper objectMapper,
-                                     @Value("${rest-template.host}") String address) {
+                                     @Value("${rest-template.server.host}") String address) {
         this.restTemplate = restTemplate;
         this.objectMapper = objectMapper;
         this.url = "http://" + address + ":8181/languages";

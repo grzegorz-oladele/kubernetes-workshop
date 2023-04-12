@@ -28,18 +28,30 @@ services:
       - database
     networks:
       - application
-#  CLIENT APP
-  client:
-    container_name: client
-    image: grzesiekoladele/client_app:v2
+#  MESSAGE SERVICE
+  message-service:
+    container_name: message-service
+    image: grzesiekoladele/message-service:v1
     ports:
-      - "8080:8080"
-    environment:
-      REST-TEMPLATE_HOST: server
-      SPRING_MAIN_ALLOW-BEAN-DEFINITION-OVERRIDING: true
+      - "8282:8282"
     restart: always
     depends_on:
       - server
+    networks:
+      - application
+#  CLIENT APP
+  client:
+    container_name: client
+    image: grzesiekoladele/client_app:v4
+    ports:
+      - "8080:8080"
+    environment:
+      REST-TEMPLATE_SERVER_HOST: server
+      REST-TEMPLATE_MESSAGE-SERVICE_HOST: message-service
+      SPRING_MAIN_ALLOW-BEAN-DEFINITION-OVERRIDING: true
+    restart: always
+    depends_on:
+      - message-service
     networks:
       - application
 networks:
